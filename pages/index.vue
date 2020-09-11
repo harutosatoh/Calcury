@@ -66,16 +66,24 @@
           v-model="content"
           placeholder="共通する金額を入力してください"
         />
+        <input
+          class="input is-primary"
+          type="text"
+          name="addContent"
+          v-model="content"
+          placeholder="内容を入力してください"
+        />
       </div>
       <button class="button is-success" @click="insert">追加</button>
     </div>
     <div id="table">
       <h3></h3>
       <tr v-for="(item, index) in payments" :key="index">
-        <td>{{ item.number }}</td>
+        <td class="num">￥{{ item.number }}</td>
+        <td class="content">{{ item.content }}</td>
       </tr>
       <div class="p-title-container">
-        <p>現在一人当たりの金額は...</p>
+        <p>現在の合計:￥{{}}</p>
       </div>
       <div class="card">
         <div class="card-content">
@@ -225,6 +233,17 @@ input {
 button {
   margin-top: 15px;
   min-width: 200px;
+}
+
+tr {
+  display: flex;
+  margin-top: 15px;
+  justify-content: center;
+}
+
+td.num {
+  padding-right: 20px;
+  font-weight: bold;
 }
 
 .p-title-container {
