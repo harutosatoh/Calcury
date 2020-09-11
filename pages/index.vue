@@ -49,7 +49,7 @@
           <input
             class="input is-primary"
             type="text"
-            placeholder="金額を入力してください"
+            placeholder="三人目の名前を入力してください"
           />
         </div>
       </div>
@@ -62,11 +62,18 @@
         <input
           class="input is-primary"
           type="text"
-          placeholder="三人目の名前を入力してください"
+          name="addPayment"
+          v-model="content"
+          placeholder="共通する金額を入力してください"
         />
       </div>
+      <button class="button is-success" @click="insert">追加</button>
     </div>
     <div id="table">
+      <h3></h3>
+      <tr v-for="(item, index) in payments" :key="index">
+        <td>{{ item.number }}</td>
+      </tr>
       <div class="p-title-container">
         <p>現在一人当たりの金額は...</p>
       </div>
@@ -87,16 +94,18 @@
             </div>
           </div>
         </div>
-        <input
-          class="input is-primary"
-          type="text"
-          placeholder="支払った金額を入れてください"
-        />
-        <input
-          class="input is-primary"
-          type="text"
-          placeholder="個別の金額を入力してください"
-        />
+        <form class="each-payment-form">
+          <input
+            class="input is-primary"
+            type="text"
+            placeholder="個別に支払った金額を入れてください"
+          />
+          <input
+            class="input is-primary"
+            type="text"
+            placeholder="個別の金額を入力してください"
+          />
+        </form>
       </div>
       <div class="card">
         <div class="card-content">
@@ -115,16 +124,18 @@
             </div>
           </div>
         </div>
-        <input
-          class="input is-primary"
-          type="text"
-          placeholder="支払った金額を入力してください"
-        />
-        <input
-          class="input is-primary"
-          type="text"
-          placeholder="個別の金額を入れてください"
-        />
+        <form class="each-payment-form">
+          <input
+            class="input is-primary"
+            type="text"
+            placeholder="個別に支払った金額を入れてください"
+          />
+          <input
+            class="input is-primary"
+            type="text"
+            placeholder="個別の金額を入力してください"
+          />
+        </form>
       </div>
       <div class="card">
         <div class="card-content">
@@ -143,23 +154,35 @@
             </div>
           </div>
         </div>
-        <input
-          class="input is-primary"
-          type="text"
-          placeholder="支払った金額を入れてください"
-        />
-        <input
-          class="input is-primary"
-          type="text"
-          placeholder="個別の金額を入れてください"
-        />
+        <form class="each-payment-form">
+          <input
+            class="input is-primary"
+            type="text"
+            placeholder="個別に支払った金額を入れてください"
+          />
+          <input
+            class="input is-primary"
+            type="text"
+            placeholder="個別の金額を入力してください"
+          />
+        </form>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+import { mapState } from 'vuex'
+export default {
+  data: () => {
+    return {
+      number: '',
+    }
+  },
+  computed: {
+    ...mapState(['payments']),
+  },
+}
 </script>
 
 <style>
@@ -194,8 +217,23 @@ export default {}
   display: none;
 }
 
+input {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+button {
+  margin-top: 15px;
+  min-width: 200px;
+}
+
 .p-title-container {
   margin-top: 30px;
   margin-bottom: 20px;
+}
+
+.each-payment-form {
+  width: 90%;
+  margin: 15px auto;
 }
 </style>
