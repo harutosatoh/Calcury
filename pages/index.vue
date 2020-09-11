@@ -93,7 +93,9 @@
       </tr>
       </div>
       <div class="p-title-container">
-        <p>現在の合計:￥{{}}</p>
+        <tr v-for="(item, index) in currentSum" :key="index">
+          <p>現在の合計:￥{{ item.number }}</p>
+        </tr>
       </div>
       <div v-for="(item, index) in users" :key="index">
       <div class="card">
@@ -185,7 +187,7 @@ export default {
         this.content = ''
       }
     },
-  },
+  }
 }
 </script>
 
