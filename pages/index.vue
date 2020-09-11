@@ -70,10 +70,10 @@
       <div class="input-num-box">
         <input
           class="input is-primary"
-          type="text"
-          name="content"
-          v-model="content"
-          placeholder="共通する金額を入力してください"
+          type="number"
+          name="sum"
+          v-model="sum"
+          placeholder="金額を入力(半角数字のみ）"
         />
         <input
           class="input is-primary"
@@ -86,11 +86,12 @@
       <button class="button is-primary is-focused" @click="insert">追加</button>
     </div>
     <div id="table">
-      <h3></h3>
-      <tr v-for="(item, index) in payments" :key="index">
-        <td class="num">￥{{ item.number }}</td>
-        <td class="content">{{ item.content }}</td>
+      <div class="panel is-primary">
+        <tr class="panel-block is-active" v-for="(item, index) in payments" :key="index">
+          <td class="num">￥{{ item.number }}</td>
+          <td class="content">{{ item.content }}</td>
       </tr>
+      </div>
       <div class="p-title-container">
         <p>現在の合計:￥{{}}</p>
       </div>
@@ -178,8 +179,9 @@ export default {
       }
     },
     insert: function () {
-      if (this.content !== '') {
-        this.$store.commit('insert', { content: this.content }, { root: true })
+      if (this.content !== '' && this.sum !== null) {
+        this.$store.commit('insert', { number: this.sum, content: this.content }, { root: true })
+        this.sum= ''
         this.content = ''
       }
     },
@@ -236,7 +238,7 @@ tr {
   justify-content: center;
 }
 
-td.num {
+td {
   padding-right: 20px;
   font-weight: bold;
 }
@@ -249,5 +251,9 @@ td.num {
 .each-payment-form {
   width: 90%;
   margin: 15px auto;
+}
+
+.panel {
+  margin-top: 30px;
 }
 </style>
