@@ -49,7 +49,7 @@
           <input
             class="input is-primary"
             type="text"
-            placeholder="三人目の名前を入力してください"
+            placeholder="金額を入力してください"
           />
         </div>
       </div>
@@ -57,6 +57,13 @@
     <div id="num-input-container">
       <div class="p-title-container">
         <p>割り勘する金額を入れてください</p>
+      </div>
+      <div class="input-num-box">
+        <input
+          class="input is-primary"
+          type="text"
+          placeholder="三人目の名前を入力してください"
+        />
       </div>
     </div>
     <div id="table">
@@ -80,6 +87,16 @@
             </div>
           </div>
         </div>
+        <input
+          class="input is-primary"
+          type="text"
+          placeholder="支払った金額を入れてください"
+        />
+        <input
+          class="input is-primary"
+          type="text"
+          placeholder="個別の金額を入力してください"
+        />
       </div>
       <div class="card">
         <div class="card-content">
@@ -98,6 +115,16 @@
             </div>
           </div>
         </div>
+        <input
+          class="input is-primary"
+          type="text"
+          placeholder="支払った金額を入力してください"
+        />
+        <input
+          class="input is-primary"
+          type="text"
+          placeholder="個別の金額を入れてください"
+        />
       </div>
       <div class="card">
         <div class="card-content">
@@ -116,6 +143,16 @@
             </div>
           </div>
         </div>
+        <input
+          class="input is-primary"
+          type="text"
+          placeholder="支払った金額を入れてください"
+        />
+        <input
+          class="input is-primary"
+          type="text"
+          placeholder="個別の金額を入れてください"
+        />
       </div>
     </div>
   </div>
