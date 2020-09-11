@@ -62,14 +62,14 @@
         <input
           class="input is-primary"
           type="text"
-          name="addPayment"
+          name="content"
           v-model="content"
           placeholder="共通する金額を入力してください"
         />
         <input
           class="input is-primary"
           type="text"
-          name="addContent"
+          name="content"
           v-model="content"
           placeholder="内容を入力してください"
         />
@@ -182,13 +182,22 @@
 <script>
 import { mapState } from 'vuex'
 export default {
+  namespaced: true,
   data: () => {
     return {
-      number: '',
+      content: '',
     }
   },
   computed: {
     ...mapState(['payments']),
+  },
+  methods: {
+    insert: function () {
+      if (this.content !== '') {
+        this.$store.commit('insert', { content: this.content }, { root: true })
+        this.content = ''
+      }
+    },
   },
 }
 </script>

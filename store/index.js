@@ -8,6 +8,14 @@ const createStore = () => {
         { number: 21221, content: '宿泊費' },
       ],
     }),
+    mutations: {
+      insert: (state, obj) => {
+        state.payments.unshift({
+          number: obj.number,
+          content: obj.content,
+        })
+      },
+    },
   })
 }
 export default createStore
