@@ -31,28 +31,37 @@
           <input
             class="input is-warning"
             type="text"
+            name="name"
+            v-model="first"
             placeholder="一人目の名前を入力してください"
           />
         </div>
       </div>
+      <button class="button is-success is-rounded" v-bind:disabled="isPush1" @click="insertUser1">追加</button>
       <div class="field">
         <div class="control">
           <input
             class="input is-info"
             type="text"
+            name="name"
+            v-model="second"
             placeholder="二人目の名前を入力してください"
           />
         </div>
       </div>
+      <button class="button is-success is-rounded" v-bind:disabled="isPush2" @click="insertUser2">追加</button>
       <div class="field">
         <div class="control">
           <input
             class="input is-primary"
             type="text"
+            name="name"
+            v-model="third"
             placeholder="三人目の名前を入力してください"
           />
         </div>
       </div>
+      <button class="button is-success is-rounded" v-bind:disabled="isPush3" @click="insertUser3">追加</button>
     </div>
     <div id="num-input-container">
       <div class="p-title-container">
@@ -74,7 +83,7 @@
           placeholder="内容を入力してください"
         />
       </div>
-      <button class="button is-success" @click="insert">追加</button>
+      <button class="button is-primary is-focused" @click="insert">追加</button>
     </div>
     <div id="table">
       <h3></h3>
@@ -85,6 +94,7 @@
       <div class="p-title-container">
         <p>現在の合計:￥{{}}</p>
       </div>
+      <div v-for="(item, index) in users" :key="index">
       <div class="card">
         <div class="card-content">
           <div class="media">
@@ -98,7 +108,7 @@
             </div>
             <div class="media-content">
               <p class="title is-4">￥2888</p>
-              <p class="subtitle is-6">@johnsmith</p>
+              <p class="subtitle is-6">{{ item.name }}</p>
             </div>
           </div>
         </div>
@@ -115,67 +125,9 @@
           />
         </form>
       </div>
-      <div class="card">
-        <div class="card-content">
-          <div class="media">
-            <div class="media-left">
-              <figure class="image is-48x48">
-                <img
-                  src="https://picsum.photos/200/300?grayscale"
-                  alt="Placeholder image"
-                />
-              </figure>
-            </div>
-            <div class="media-content">
-              <p class="title is-4">￥2888</p>
-              <p class="subtitle is-6">@johnsmith</p>
-            </div>
-          </div>
-        </div>
-        <form class="each-payment-form">
-          <input
-            class="input is-primary"
-            type="text"
-            placeholder="個別に支払った金額を入れてください"
-          />
-          <input
-            class="input is-primary"
-            type="text"
-            placeholder="個別の金額を入力してください"
-          />
-        </form>
-      </div>
-      <div class="card">
-        <div class="card-content">
-          <div class="media">
-            <div class="media-left">
-              <figure class="image is-48x48">
-                <img
-                  src="https://picsum.photos/seed/picsum/200/300"
-                  alt="Placeholder image"
-                />
-              </figure>
-            </div>
-            <div class="media-content">
-              <p class="title is-4">￥2888</p>
-              <p class="subtitle is-6">@johnsmith</p>
-            </div>
-          </div>
-        </div>
-        <form class="each-payment-form">
-          <input
-            class="input is-primary"
-            type="text"
-            placeholder="個別に支払った金額を入れてください"
-          />
-          <input
-            class="input is-primary"
-            type="text"
-            placeholder="個別の金額を入力してください"
-          />
-        </form>
       </div>
     </div>
+    <button class="button is-danger clear-all">全てのデータを消去</button>
   </div>
 </template>
 
@@ -185,13 +137,46 @@ export default {
   namespaced: true,
   data: () => {
     return {
+      isPush : false,
+    }
+  },
+  data: () => {
+    return {
       content: '',
     }
   },
   computed: {
     ...mapState(['payments']),
+    ...mapState(['users']),
   },
   methods: {
+    insertUser1: function () {
+      console.log("called")
+      if (this.first !== '') {
+        this.$store.commit('insertUser', { name: this.first, uid: 1 }, { root: true })
+        console.log(this.first)
+        this.isPush1 = true
+        this.first = ''
+      }
+    },
+    insertUser2: function () {
+      console.log("called")
+      if (this.second !== '') {
+        this.$store.commit('insertUser', { name: this.second, uid: 2 }, { root: true })
+        console.log(this.second)
+        this.isPush2 = true
+        this.second = ''
+      }
+    },
+    insertUser3: function () {
+      console.log("called")
+      if (this.third !== '') {
+        this.$store.commit('insertUser', { name: this.third, uid: 3 }, { root: true })
+        console.log(this.first)
+        this.isPush3 = true
+        this.third = ''
+      }
+    },
     insert: function () {
       if (this.content !== '') {
         this.$store.commit('insert', { content: this.content }, { root: true })
@@ -205,6 +190,7 @@ export default {
 <style>
 .container {
   margin: 0 auto;
+  margin-bottom: 100px;
   padding-left: 30px;
   padding-right: 30px;
   min-height: 100vh;
