@@ -7,8 +7,6 @@ const createStore = () => {
       ],
       currentSum: [{ number: '0' }],
       payments: [
-        { number: 43, content: 'レンタカー' },
-        { number: 21221, content: '宿泊費' },
       ],
     }),
     mutations: {

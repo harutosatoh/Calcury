@@ -93,7 +93,8 @@
       </tr>
       </div>
       <div class="p-title-container">
-          <p>現在の合計:￥{{ this.$store.state.currentSum[0] }}</p>
+        <p>現在の合計:</p>
+        <h3 id="sum">￥{{ this.$store.state.currentSum[0].number }}</h3>
       </div>
       <div v-for="(item, index) in users" :key="index">
       <div class="card">
@@ -262,5 +263,10 @@ td {
 
 .panel {
   margin-top: 30px;
+}
+
+#sum {
+  font-size: 30px;
+  font-weight: bold;
 }
 </style>
