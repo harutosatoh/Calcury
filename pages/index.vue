@@ -125,7 +125,7 @@
         </div>
           <input
             class="input is-primary card-content"
-            type="text"
+            type="number"
             v-model="paymentseach"
             placeholder="個別に支払った金額を入れてください"
           />
