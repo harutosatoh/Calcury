@@ -56,7 +56,7 @@ export default {
     // Doc: https://github.com/nuxt-community/modules/tree/master/packages/bulma
     '@nuxtjs/bulma',
     '@nuxtjs/pwa',
-    ['@nuxtjs/pwa', { icon: false }],
+    ['@nuxtjs/pwa', { icon: true }],
   ],
   /*
    ** Build configuration
@@ -69,6 +69,13 @@ export default {
           customProperties: false,
         },
       },
+    },
+  },
+  pwa: {
+    manifest: {
+      name: 'Calcury',
+      lang: 'jp',
+      useWebmanifestExtension: false,
     },
   },
 }
