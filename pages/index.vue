@@ -93,9 +93,7 @@
       </tr>
       </div>
       <div class="p-title-container">
-        <tr v-for="(item, index) in currentSum" :key="index">
-          <p>現在の合計:￥{{ item.number }}</p>
-        </tr>
+          <p>現在の合計:￥{{ this.$store.state.currentSum[0] }}</p>
       </div>
       <div v-for="(item, index) in users" :key="index">
       <div class="card">
@@ -151,6 +149,7 @@ export default {
   computed: {
     ...mapState(['payments']),
     ...mapState(['users']),
+    ...mapState(['currentSum']),
   },
   methods: {
     insertUser1: function () {
@@ -182,7 +181,13 @@ export default {
     },
     insert: function () {
       if (this.content !== '' && this.sum !== null) {
+        var currentSum = this.$store.state.currentSum[0].number
+        var currentSumNum = parseInt( currentSum, '10')
+        var sumNum = parseInt( this.sum, '10')
+        console.log( currentSum )
+        var totalSum = sumNum + currentSumNum
         this.$store.commit('insert', { number: this.sum, content: this.content }, { root: true })
+        this.$store.commit('insertSum', { totalSum: totalSum }, { root: true })
         this.sum= ''
         this.content = ''
       }

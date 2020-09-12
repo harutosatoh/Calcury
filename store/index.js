@@ -5,13 +5,11 @@ const createStore = () => {
     state: () => ({
       users: [
       ],
+      currentSum: [{ number: '0' }],
       payments: [
         { number: 43, content: 'レンタカー' },
         { number: 21221, content: '宿泊費' },
       ],
-      totalSum: [
-        { number: 0 },
-      ]
     }),
     mutations: {
       insertUser: (state, obj, uid) => {
@@ -26,6 +24,9 @@ const createStore = () => {
           content: obj.content,
         })
       },
+      insertSum: (state, obj) => {
+        state.currentSum.splice(0, 1, { number: obj.totalSum })
+      }
     },
   })
 }
