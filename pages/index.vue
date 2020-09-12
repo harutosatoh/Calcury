@@ -99,9 +99,9 @@
       </tr>
       </div>
       <div class="p-title-container">
-        <p>現在の合計:</p>
+        <p class="show-sum">現在の合計:</p>
         <h3 class="sum">￥{{ this.$store.state.currentSum[0].number }}</h3>
-        <p>一人あたりの金額（小数点以下切り捨て):</p>
+        <p class="show-sum">一人あたりの金額（小数点以下切り捨て):</p>
         <h3 class="sum">￥{{ divider(this.$store.state.currentSum[0].number)}}</h3>
       </div>
       <div v-for="(item, index) in users" :key="index">
@@ -225,6 +225,10 @@ export default {
   padding-right: 30px;
 }
 
+header p {
+  font-size: 15px;
+}
+
 #banner {
   height: 45px;
   width: 100%;
@@ -253,7 +257,7 @@ img {
 }
 
 .subtitle {
-  font-weight: 300;
+  font-weight: bold;
   font-size: 2rem;
   color: #526488;
   word-spacing: 5px;
@@ -309,11 +313,19 @@ td {
 
 .panel {
   margin-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .sum {
   font-size: 27px;
   font-weight: bold;
+}
+
+.show-sum {
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: normal;
 }
 
 #input-container {
