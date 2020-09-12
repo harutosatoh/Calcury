@@ -31,7 +31,10 @@ const createStore = () => {
       },
       insertSum: (state, obj) => {
         state.currentSum.splice(0, 1, { number: obj.totalSum })
-      }
+      },
+      paymentsEach: (state, obj) => {
+        state.paymentsEach.splice(obj.uid, 1, { number: obj.number, uid: obj.uid })
+      },
     },
   })
 }

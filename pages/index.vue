@@ -118,9 +118,10 @@
           <input
             class="input is-primary card-content"
             type="text"
+            v-model="paymentseach"
             placeholder="個別に支払った金額を入れてください"
           />
-          <button class="button is-primary is-light card-content">支払いを追加</button>
+          <button class="button is-primary is-light card-content" @click="insertPayment(item.uid)">支払いを追加</button>
       </div>
       </div>
     </div>
@@ -188,6 +189,11 @@ export default {
         this.sum= ''
         this.content = ''
       }
+    },
+    insertPayment: function (uid) {
+      this.$store.commit('paymentsEach', { number: this.paymentseach, uid: uid }, { root: true })
+      this.paymentseach = ''
+      console.log(this.paymentseach)
     },
   }
 }
