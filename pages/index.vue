@@ -1,8 +1,14 @@
 <template>
   <div class="container">
-    <div>
-      <Logo />
+    <div id="banner">
+      <p>このページをホーム画面に追加することで、通常のアプリとして使用できるようになります！</p>
+    </div>
+    <div class="header">
+      <img src="../static/icon.png" alt="">
       <h1 class="title">Calcury</h1>
+      <div class='desc'>
+        <p>Calcuryは3人グループでのちょっとしたお金の管理を助けるアプリです。合計金額やそれぞれが払った額を記録しておき、あとでしっかり確認できるようにしましょう！</p>
+      </div>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
@@ -127,7 +133,6 @@
       </div>
       </div>
     </div>
-    <button class="button is-danger clear-all">全てのデータを消去</button>
   </div>
 </template>
 
@@ -211,10 +216,30 @@ export default {
 .container {
   margin: 0 auto;
   margin-bottom: 100px;
-  padding-left: 30px;
-  padding-right: 30px;
   min-height: 100vh;
   text-align: center;
+}
+
+.header {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+#banner {
+  height: 45px;
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #339455;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+img {
+  margin-top: 30px;
+  width: 150px;
+  height: auto;
 }
 
 .title {
@@ -241,6 +266,8 @@ export default {
 
 .card {
   margin-bottom: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 input {
@@ -267,6 +294,7 @@ td {
 .p-title-container {
   margin-top: 30px;
   margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .each-payment-form {
@@ -286,5 +314,15 @@ td {
 .sum {
   font-size: 27px;
   font-weight: bold;
+}
+
+#input-container {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+#num-input-container {
+  padding-left: 30px;
+  padding-right: 30px;
 }
 </style>
