@@ -94,7 +94,9 @@
       </div>
       <div class="p-title-container">
         <p>現在の合計:</p>
-        <h3 id="sum">￥{{ this.$store.state.currentSum[0].number }}</h3>
+        <h3 class="sum">￥{{ this.$store.state.currentSum[0].number }}</h3>
+        <p>一人あたりの金額（小数点以下切り捨て):</p>
+        <h3 class="sum">￥{{ divider(this.$store.state.currentSum[0].number)}}</h3>
       </div>
       <div v-for="(item, index) in users" :key="index">
       <div class="card">
@@ -195,6 +197,12 @@ export default {
       this.paymentseach = ''
       console.log(this.paymentseach)
     },
+    divider: function (number) {
+      var num = parseInt(number, '10')
+      var numDivided = num/3
+      var numInt = Math.floor(numDivided)
+      return numInt
+    }
   }
 }
 </script>
@@ -229,6 +237,10 @@ export default {
 .links {
   padding-top: 15px;
   display: none;
+}
+
+.card {
+  margin-bottom: 30px;
 }
 
 input {
@@ -271,8 +283,8 @@ td {
   margin-top: 30px;
 }
 
-#sum {
-  font-size: 30px;
+.sum {
+  font-size: 27px;
   font-weight: bold;
 }
 </style>
