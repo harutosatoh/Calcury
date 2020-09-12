@@ -109,23 +109,18 @@
               </figure>
             </div>
             <div class="media-content">
-              <p class="title is-4">￥2888</p>
               <p class="subtitle is-6">{{ item.name }}</p>
+              <p>支払済</p>
+              <p class="title is-4">￥{{ item.payment }}</p>
             </div>
           </div>
         </div>
-        <form class="each-payment-form">
           <input
-            class="input is-primary"
+            class="input is-primary card-content"
             type="text"
             placeholder="個別に支払った金額を入れてください"
           />
-          <input
-            class="input is-primary"
-            type="text"
-            placeholder="個別の金額を入力してください"
-          />
-        </form>
+          <button class="button is-primary is-light card-content">支払いを追加</button>
       </div>
       </div>
     </div>
@@ -156,7 +151,7 @@ export default {
     insertUser1: function () {
       console.log("called")
       if (this.first !== '') {
-        this.$store.commit('insertUser', { name: this.first, uid: 1 }, { root: true })
+        this.$store.commit('insertUser', { name: this.first, uid: 1, payment: '0' }, { root: true })
         console.log(this.first)
         this.isPush1 = true
         this.first = ''
@@ -165,7 +160,7 @@ export default {
     insertUser2: function () {
       console.log("called")
       if (this.second !== '') {
-        this.$store.commit('insertUser', { name: this.second, uid: 2 }, { root: true })
+        this.$store.commit('insertUser', { name: this.second, uid: 2, payment: '0' }, { root: true })
         console.log(this.second)
         this.isPush2 = true
         this.second = ''
@@ -174,7 +169,7 @@ export default {
     insertUser3: function () {
       console.log("called")
       if (this.third !== '') {
-        this.$store.commit('insertUser', { name: this.third, uid: 3 }, { root: true })
+        this.$store.commit('insertUser', { name: this.third, uid: 3, payment: '0' }, { root: true })
         console.log(this.first)
         this.isPush3 = true
         this.third = ''
@@ -219,10 +214,9 @@ export default {
 
 .subtitle {
   font-weight: 300;
-  font-size: 42px;
+  font-size: 2rem;
   color: #526488;
   word-spacing: 5px;
-  padding-bottom: 35px;
 }
 
 .links {
@@ -259,6 +253,11 @@ td {
 .each-payment-form {
   width: 90%;
   margin: 15px auto;
+}
+
+.card-content {
+  width: 90%;
+  margin-bottom: 10px;
 }
 
 .panel {

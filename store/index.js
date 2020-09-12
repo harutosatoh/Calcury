@@ -14,6 +14,7 @@ const createStore = () => {
         state.users.unshift({
           uid: uid,
           name: obj.name,
+          payment: obj.payment,
         })
       },
       insert: (state, obj) => {
