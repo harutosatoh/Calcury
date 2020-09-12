@@ -8,11 +8,17 @@ const createStore = () => {
       currentSum: [{ number: '0' }],
       payments: [
       ],
+      paymentsEach: [
+        { number: 0, uid:0 },
+        { number: 0, uid:1 },
+        { number: 0, uid:2 },
+        { number: 0, uid:3 },
+      ],
     }),
     mutations: {
       insertUser: (state, obj, uid) => {
         state.users.unshift({
-          uid: uid,
+          uid: obj.uid,
           name: obj.name,
           payment: obj.payment,
         })

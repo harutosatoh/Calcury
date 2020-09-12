@@ -111,7 +111,7 @@
             <div class="media-content">
               <p class="subtitle is-6">{{ item.name }}</p>
               <p>支払済</p>
-              <p class="title is-4">￥{{ item.payment }}</p>
+              <p class="title is-4">￥{{ $store.state.paymentsEach[item.uid].number }}</p>
             </div>
           </div>
         </div>
@@ -146,6 +146,7 @@ export default {
     ...mapState(['payments']),
     ...mapState(['users']),
     ...mapState(['currentSum']),
+    ...mapState(['paymentsEach'])
   },
   methods: {
     insertUser1: function () {
