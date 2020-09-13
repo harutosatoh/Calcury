@@ -1,6 +1,6 @@
 # Calcury
 
-## 3人グループのための支払い管理アプリ。
+ 3人グループのための支払い管理アプリ。
 
 ```bash
 # install dependencies
