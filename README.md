@@ -1,6 +1,6 @@
 # Calcury
 
-## Build Setup
+## 3人グループのための支払い管理アプリ。
 
 ```bash
 # install dependencies
