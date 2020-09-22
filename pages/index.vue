@@ -158,7 +158,9 @@
                 </p>
                 <p>未払いの金額</p>
                 <p class="title is-4">
-                  ￥{{ substractor( $store.state.paymentsEach[item.uid].number) }}
+                  ￥{{
+                    substractor($store.state.paymentsEach[item.uid].number)
+                  }}
                 </p>
               </div>
             </div>
@@ -177,6 +179,11 @@
           </button>
         </div>
       </div>
+      <button 
+        class="button is-danger is-rounded"
+        @click="deleteAll()"
+      >データを消去する
+      </button>
     </div>
   </div>
 </template>
@@ -277,9 +284,12 @@ export default {
       console.log(payment)
       var currentSum = parseInt(this.$store.state.currentSum[0].number)
       var eachPayment = parseInt(payment)
-      var margin = (Math.floor(currentSum/3)) - eachPayment 
+      var margin = Math.floor(currentSum / 3) - eachPayment
       console.log(margin)
       return margin
+    },
+    deleteAll: function () {
+      this.$store.commit('deleteAll', { root: true })
     },
   },
 }
