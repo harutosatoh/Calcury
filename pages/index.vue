@@ -179,10 +179,8 @@
           </button>
         </div>
       </div>
-      <button 
-        class="button is-danger is-rounded"
-        @click="deleteAll()"
-      >データを消去する
+      <button class="button is-danger is-rounded" @click="deleteAll()">
+        データを消去する
       </button>
     </div>
   </div>
@@ -195,6 +193,10 @@ export default {
   data: () => {
     return {
       isPush: false,
+      styleObject: {
+        color: 'red',
+        fontSize: '13px',
+      },
     }
   },
   data: () => {
@@ -290,6 +292,14 @@ export default {
     },
     deleteAll: function () {
       this.$store.commit('deleteAll', { root: true })
+    },
+    viewGone: function () {
+      return {
+        this,styleObject: {
+          color: 'white',
+          fontSize: '13px',
+        },
+      }
     },
   },
 }
