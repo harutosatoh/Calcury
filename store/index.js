@@ -1,4 +1,5 @@
 import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 
 const createStore = () => {
   return new Vuex.Store({
@@ -35,7 +36,14 @@ const createStore = () => {
       paymentsEach: (state, obj) => {
         state.paymentsEach.splice(obj.uid, 1, { number: obj.number, uid: obj.uid })
       },
+      deleteAll: (state) => {
+        state.users.length = 0
+        state.currentSum.splice(0, 1, { number: 0 })
+        state.payments.length = 0
+        state.paymentsEach.splice(0, 4, { number: 0 }, { number: 0 }, { number: 0 }, { number: 0 })
+      }
     },
+    plugins: [createPersistedState()],
   })
 }
 export default createStore
