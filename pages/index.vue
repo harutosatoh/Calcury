@@ -5,8 +5,8 @@
         <p>Notice</p>
         <button class="delete" aria-label="delete"></button>
       </div>
-      <div class="message-body" style="font-size: 0.9rem;">
-       このページをホーム画面に追加することで、アプリとしてお使いいただくことができます。
+      <div class="message-body" style="font-size: 0.9rem">
+        このページをホーム画面に追加することで、アプリとしてお使いいただくことができます。
       </div>
     </article>
     <div class="header">
@@ -115,7 +115,9 @@
           placeholder="内容を入力してください"
         />
       </div>
-      <button class="button is-primary is-focused is-rounded" @click="insert">追加</button>
+      <button class="button is-primary is-focused is-rounded" @click="insert">
+        追加
+      </button>
     </div>
     <div id="table">
       <div class="panel is-primary">
@@ -153,6 +155,10 @@
                 <p>支払済</p>
                 <p class="title is-4">
                   ￥{{ $store.state.paymentsEach[item.uid].number }}
+                </p>
+                <p>未払いの金額</p>
+                <p class="title is-4">
+                  ￥{{ substractor( $store.state.paymentsEach[item.uid].number) }}
                 </p>
               </div>
             </div>
@@ -266,6 +272,14 @@ export default {
       var numDivided = num / 3
       var numInt = Math.floor(numDivided)
       return numInt
+    },
+    substractor: function (payment) {
+      console.log(payment)
+      var currentSum = parseInt(this.$store.state.currentSum[0].number)
+      var eachPayment = parseInt(payment)
+      var margin = (Math.floor(currentSum/3)) - eachPayment 
+      console.log(margin)
+      return margin
     },
   },
 }
