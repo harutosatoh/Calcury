@@ -12,10 +12,24 @@
     <div class="header">
       <img src="../static/icon.png" alt="" />
       <h1 class="title">Calcury</h1>
+      <div class="box">
+        <article class="media">
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <span class="icon has-text-info">
+                  <i class="fas fa-info-circle"></i>
+                </span>
+                <br />
+                Calcuryは<strong>3人グループでの</strong>ちょっとした<strong>お金の管理</strong>を助けるアプリです。全体で使った金額やそれぞれが払った額を記録しておき、あとでしっかり確認できるようにしましょう！
+              </p>
+            </div>
+            <nav class="level is-mobile"></nav>
+          </div>
+        </article>
+      </div>
       <div class="desc">
-        <p>
-          Calcuryは3人グループでのちょっとしたお金の管理を助けるアプリです。合計金額やそれぞれが払った額を記録しておき、あとでしっかり確認できるようにしましょう！
-        </p>
+        <p></p>
       </div>
       <div class="links">
         <a
@@ -292,14 +306,6 @@ export default {
     },
     deleteAll: function () {
       this.$store.commit('deleteAll', { root: true })
-    },
-    viewGone: function () {
-      return {
-        this,styleObject: {
-          color: 'white',
-          fontSize: '13px',
-        },
-      }
     },
   },
 }
