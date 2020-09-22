@@ -59,7 +59,11 @@ export default {
     '@nuxtjs/bulma',
     '@nuxtjs/pwa',
     ['@nuxtjs/pwa', { icon: true }],
+    '@nuxtjs/google-analytics',
   ],
+  googleAnalytics: {
+    id: 'UA-150912017-5',
+  },
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
