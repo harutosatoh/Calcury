@@ -31,25 +31,8 @@
       <div class="desc">
         <p></p>
       </div>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
     </div>
+    <a href="#table" style="font-weight: bold;">{{ $store.state.isSaved[0].string }}</a>
     <div id="input-container">
       <div class="p-title-container">
         <p>参加者の名前を入れましょう</p>
@@ -262,6 +245,7 @@ export default {
         console.log(this.first)
         this.isPush3 = true
         this.third = ''
+        this.$store.commit('isDateSaved', { root: true })
       }
     },
     insert: function () {

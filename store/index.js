@@ -6,6 +6,9 @@ const createStore = () => {
     state: () => ({
       users: [
       ],
+      isSaved: [
+        { string: ''},
+      ],
       currentSum: [{ number: '0' }],
       payments: [
       ],
@@ -41,7 +44,12 @@ const createStore = () => {
         state.currentSum.splice(0, 1, { number: 0 })
         state.payments.length = 0
         state.paymentsEach.splice(0, 4, { number: 0 }, { number: 0 }, { number: 0 }, { number: 0 })
-      }
+        state.isSaved.splice(0, 1, { string: ''})
+      },
+      isDateSaved: (state) => {
+        const string = '現在の金額を見る'
+        state.isSaved.splice(0, 1, { string: string })
+      },
     },
     plugins: [createPersistedState()],
   })
